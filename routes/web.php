@@ -35,7 +35,7 @@ Route::get('/Sobremi', function(){
 
 
 // Rutas para notas usando el controlador
-Route::get('/notes', [NoteController::class, 'index'])->name('index');
-Route::get('/notes/{id}', [NoteController::class, 'show'])->name('show');
+Route::get('/notes', [NoteController::class, 'index'])->name('notes.index');
+Route::get('/notes/{id}', [NoteController::class, 'show'])->name('notes.show');
 
 

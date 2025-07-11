@@ -46,7 +46,7 @@
     </style>
 </head>
 <body>
-    <a href="{{ route('index') }}" class="back-button">← Volver a las notas</a>
+    <a href="{{ route('notes.index') }}" class="back-button">← Volver a las notas</a>
     
     <div class="note-container">
         <h1 class="note-title">{{ $note->title }}</h1>

@@ -16,7 +16,7 @@ class NoteController extends Controller
         $notes = Note::all();
         
         // Retornar la vista con las notas
-        return view('index', compact('notes'));
+        return view('notes.index', compact('notes'));
     }
     
     /**
@@ -29,11 +29,11 @@ class NoteController extends Controller
         
         // Si no existe, redirigir con error
         if (!$note) {
-            return redirect()->route('index')
+            return redirect()->route('notes.index')
                 ->with('error', 'Nota no encontrada');
         }
         
         // Retornar la vista con la nota
-        return view('show', compact('note'));
+        return view('notes.show', compact('note'));
     }
 }

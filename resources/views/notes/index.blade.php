@@ -72,6 +72,7 @@
     @if($notes->count() > 0)
         <div class="notes-grid">
             @foreach($notes as $note)
+        <a href="{{ route('notes.show', $note->id) }}" style="text-decoration: none; color: inherit;">
                 <div class="note-card">
                     <div class="note-title">{{ $note->title }}</div>
                     <div class="note-content">{{ Str::limit($note->content, 100) }}</div>
@@ -80,6 +81,7 @@
                     </div>
                 </div>
             @endforeach
+        </a>
         </div>
     @else
         <div class="no-notes">
