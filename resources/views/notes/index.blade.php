@@ -16,6 +16,12 @@
             color: #333;
             text-align: center;
         }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
         .notes-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -31,6 +37,17 @@
         }
         .note-card:hover {
             transform: translateY(-5px);
+        }
+        .btn-create {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn-create:hover {
+            background-color: #218838;
         }
         .note-title {
             font-size: 1.2em;
@@ -68,6 +85,13 @@
             ✅ {{ session('success') }}
         </div>
     @endif
+
+    <div class="header">
+            <h1>📒 Mis Notas</h1>
+            <a href="{{ route('notes.create') }}" class="btn-create">
+                ➕ Nueva Nota
+            </a>
+        </div>
     
     @if($notes->count() > 0)
         <div class="notes-grid">

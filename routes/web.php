@@ -36,6 +36,9 @@ Route::get('/Sobremi', function(){
 
 // Rutas para notas usando el controlador
 Route::get('/notes', [NoteController::class, 'index'])->name('notes.index');
+// Ruta para mostrar el formulario de crear nota
+Route::get('/notes/create', [NoteController::class, 'create'])->name('notes.create');
+// Ruta para procesar el formulario (guardar la nota)
+Route::post('/notes', [NoteController::class, 'store'])->name('notes.store');
+// Rutas para notas con identificador
 Route::get('/notes/{id}', [NoteController::class, 'show'])->name('notes.show');
-
-
