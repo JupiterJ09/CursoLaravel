@@ -33,12 +33,26 @@ Route::get('/Sobremi', function(){
     return view('Aboutme', compact('totalNotas'));
 });
 
+// Ruta principal - redirige a notas
+Route::get('/', [NoteController::class, 'index'])->name('notes.index');
 
 // Rutas para notas usando el controlador
 Route::get('/notes', [NoteController::class, 'index'])->name('notes.index');
+
 // Ruta para mostrar el formulario de crear nota
 Route::get('/notes/create', [NoteController::class, 'create'])->name('notes.create');
+
 // Ruta para procesar el formulario (guardar la nota)
 Route::post('/notes', [NoteController::class, 'store'])->name('notes.store');
-// Rutas para notas con identificador
+
+// Ruta para mostrar el formulario de editar (CORREGIDA)
+Route::get('/notes/{id}/edit', [NoteController::class, 'edit'])->name('notes.edit');
+
+// Ruta para actualizar una nota (NUEVA)
+Route::put('/notes/{id}', [NoteController::class, 'update'])->name('notes.update');
+
+// Ruta para mostrar una nota específica
 Route::get('/notes/{id}', [NoteController::class, 'show'])->name('notes.show');
+
+// Ruta para eliminar una nota (CORREGIDA)
+Route::delete('/notes/{id}', [NoteController::class, 'destroy'])->name('notes.destroy');
