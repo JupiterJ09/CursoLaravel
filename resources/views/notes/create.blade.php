@@ -1,111 +1,19 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Nueva Nota</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #333;
-        }
-        input[type="text"], textarea, select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-            box-sizing: border-box;
-        }
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: #28a745;
-        }
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-            font-family: Arial, sans-serif;
-        }
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .checkbox-group input[type="checkbox"] {
-            width: auto;
-        }
-        .error {
-            color: #dc3545;
-            font-size: 14px;
-            margin-top: 5px;
-        }
-        .form-group.has-error input,
-        .form-group.has-error textarea {
-            border-color: #dc3545;
-        }
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 30px;
-        }
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            text-decoration: none;
-            text-align: center;
-            transition: background-color 0.3s;
-            flex: 1;
-        }
-        .btn-primary {
-            background-color: #28a745;
-            color: white;
-        }
-        .btn-secondary {
-            background-color: #6c757d;
-            color: white;
-        }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #28a745;
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
-    <a href="{{ route('notes.index') }}" class="back-link">← Volver a mis notas</a>
-    
-    <div class="container">
-        <div class="header">
-            <h1>✏️ Crear Nueva Nota</h1>
-        </div>
+@extends('layouts.app')
 
+@section('title', 'Crear Nueva Nota')
+
+@section('breadcrumbs')
+    <a href="{{ route('notes.index') }}">📋 Mis Notas</a> > 
+    <span>✏️ Nueva Nota</span>
+@endsection
+
+@section('page-header')
+    <h1 class="page-title">✏️ Crear Nueva Nota</h1>
+    <p class="page-subtitle">Escribe tus ideas, pensamientos o recordatorios</p>
+@endsection
+
+@section('content')
+    <div class="form-container">
         <form action="{{ route('notes.store') }}" method="POST">
             @csrf
             
@@ -120,7 +28,7 @@
 
             <div class="form-group {{ $errors->has('category') ? 'has-error' : '' }}">
                 <label for="category">Categoría:</label>
-                <select id="category" name="category" class="category-select">
+                <select id="category" name="category">
                     <option value="">Selecciona una categoría</option>
                     <option value="Personal" {{ old('category') == 'Personal' ? 'selected' : '' }}>📝 Personal</option>
                     <option value="Trabajo" {{ old('category') == 'Trabajo' ? 'selected' : '' }}>💼 Trabajo</option>
@@ -161,5 +69,4 @@
             </div>
         </form>
     </div>
-</body>
-</html>
+@endsection
